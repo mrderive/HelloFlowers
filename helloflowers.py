@@ -44,3 +44,4 @@ model.compile(loss=tf.losses.SparseCategoricalCrossentropy(from_logits=True), op
 
 model.load_weights("flower_weights")
 model.evaluate(x=val_ds)
+# model.fit(x=train_ds, epochs=999, validation_data=val_ds, verbose=1)
