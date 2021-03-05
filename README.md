@@ -21,5 +21,11 @@ Note: Should go without saying, but just in case: you need to have [TensorFlow 2
 
 Just run the python script:
 ```
-python3 helloflowers.py
+$ python3 helloflowers.py
+
+Found 3670 files belonging to 5 classes.
+Using 2936 files for training.
+Found 3670 files belonging to 5 classes.
+Using 734 files for validation.
+23/23 [==============================] - 63s 3s/step - loss: 1.3647 - accuracy: 0.8610
 ```
