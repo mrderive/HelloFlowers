@@ -18,7 +18,7 @@ model = tf.keras.models.Sequential()
 model.add(tf.keras.layers.experimental.preprocessing.RandomFlip("horizontal", input_shape=(240, 240, 3)))
 model.add(tf.keras.layers.experimental.preprocessing.RandomRotation(0.1))
 model.add(tf.keras.layers.experimental.preprocessing.RandomZoom(0.1))
-model.add(tf.keras.layers.experimental.preprocessing.Rescaling(scale=1./255)) 
+model.add(tf.keras.layers.experimental.preprocessing.Rescaling(scale=1./255))
 
 model.add(tf.keras.layers.Conv2D(kernel_size=kernel_size, strides=1, padding="valid", filters=filters, activation="relu"))
 model.add(tf.keras.layers.MaxPooling2D(pool_size=2, strides=2, padding="valid"))
