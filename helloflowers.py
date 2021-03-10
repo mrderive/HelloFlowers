@@ -40,7 +40,7 @@ model.add(tf.keras.layers.Dense(units=5, activation=None))
 
 optimizer = tf.keras.optimizers.Adam(learning_rate=tf.keras.optimizers.schedules.PiecewiseConstantDecay([100], [0.00001, 0.00001]))
 
-model.compile(loss=tf.losses.SparseCategoricalCrossentropy(from_logits=True), optimizer=optimizer, metrics=["accuracy"])
+model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), optimizer=optimizer, metrics=["accuracy"])
 
 model.load_weights("flower_weights")
 model.evaluate(x=val_ds)
