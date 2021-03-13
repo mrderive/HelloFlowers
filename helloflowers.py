@@ -38,7 +38,7 @@ model.add(tf.keras.layers.Dropout(rate=rate))
 model.add(tf.keras.layers.Flatten())
 model.add(tf.keras.layers.Dense(units=5, activation=None))
 
-optimizer = tf.keras.optimizers.Adam(learning_rate=tf.keras.optimizers.schedules.PiecewiseConstantDecay([100], [0.00001, 0.00001]))
+optimizer = tf.keras.optimizers.Adam(learning_rate=tf.keras.optimizers.schedules.PiecewiseConstantDecay([100], [0.001, 0.0001]))
 
 model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True), optimizer=optimizer, metrics=["accuracy"])
 
