@@ -2,6 +2,8 @@
 
 A hello world abridged implementation of the TensorFlow [Image Classification tutorial](https://www.tensorflow.org/tutorials/images/classification).
 
+There is also a 96% accuracy model attained via GCP AutoML. The forward pass Tensorflow.js implementation (`helloflowers.html`) is hosted on [CodePen](https://codepen.io/mrderive/full/VwmgxqR).
+
 ## Installation
 
 Download the [flower pictures](https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz) from Google.
