@@ -1,0 +1,58 @@
+<head>
+    <meta charset="utf-8"/>
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+<script>
+    const labels = ['sunflowers', 'roses', 'daisies', 'tulips', 'dandelions']
+    const image_length = 224
+    loadModel()
+
+    async function loadModel() {
+        model = await tf.loadGraphModel('https://storage.googleapis.com/export_bucket_mrderive/model.json')
+        document.getElementById('image-upload').hidden = false
+        document.getElementById('predict-button').hidden = false
+        document.getElementById('canvas').hidden = false
+        document.getElementById('result').innerHTML = 'Done loading model.<br>Please upload a picture of a sunflower(s), rose(s), daisy(ies), tulip(s), and/or dandelion(s).<br>First prediction might take a few seconds.'
+    }
+    
+    async function predict() {
+        let ctx = document.getElementById('canvas').getContext('2d')
+        let image = document.getElementById('image-upload').files[0]
+        ctx.drawImage(await createImageBitmap(image), 0, 0, image_length, image_length)
+        
+        image = ctx.getImageData(0, 0, image_length, image_length)
+        image = tf.browser.fromPixels(image)
+        image = image.cast('float32')
+        image = image.div(255)
+        image = image.reshape([1,image_length,image_length,3])
+        
+        let result = model.predict(image)
+        result = result.reshape([labels.length])
+        result = await result.array()
+        
+        let argmax = argMax(result)
+        document.getElementById('result').innerHTML = 'I am ' + (result[argmax]*100).toFixed(2) + '% confident that these are ' + labels[argmax]
+    }
+    
+    function argMax(arr) {
+        let ret, max = 0
+        for(let i=0; i < arr.length; ++i) {
+            if(arr[i] > max) {
+                max = arr[i]
+                ret = i
+            }
+        }
+        return ret
+    }
+</script>
+
+<body>
+    <input id='image-upload' type='file' hidden=true>
+    <br><br>
+    <button id='predict-button' onclick="predict()" hidden=true>Predict</button>
+    <br><br>
+    <canvas id='canvas' height='224' width='224' hidden=true></canvas>
+    <br><br>
+    <div id='result'>Loading model. Please wait a few seconds.</div>
+</body>
