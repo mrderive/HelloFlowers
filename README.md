@@ -21,7 +21,7 @@ Note: Should go without saying, but just in case: you need to have [TensorFlow 2
 
 ## Usage
 
-Just run the python script:
+Just run the Python script:
 ```
 $ python3 helloflowers.py
 
