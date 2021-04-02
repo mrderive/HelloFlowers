@@ -2,7 +2,7 @@
 
 A hello world abridged implementation of the TensorFlow [Image Classification tutorial](https://www.tensorflow.org/tutorials/images/classification).
 
-There is also a 96% accuracy model trained via GCP AutoML and hosted on GCP Cloud Storage. The forward pass Tensorflow.js implementation (`helloflowers.html`) is hosted on [GitHub Pages](https://mrderive.github.io).
+There is also a 96% accuracy model trained via GCP AutoML and hosted on GCP Cloud Storage. The forward pass Tensorflow.js implementation is hosted on [GitHub Pages](https://mrderive.github.io).
 
 ## Installation
 
